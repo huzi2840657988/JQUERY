@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>仿百度右侧toggle</title>
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <style>
+	*{padding:0;margin:0;}
+	.contain{width:700px;margin:50px auto;}
+	dl{width:120px;float:left;margin-right:20px;margin-bottom:20px; height:145px; overflow:hidden;}
+	dl dt{text-align:center;}
+	dl dd{padding:3px 5px;font-size:12px; text-align:center;}
+	dl dd a{color:blue;text-decoration:underline;}
+	.toggle{
+		font-size:14px;
+		color:#096;
+		padding-bottom:10px;
+		text-align:right;
+		padding-right:20px;
+		cursor:pointer;
+	}
+  </style>
+  <script>
+	
+  </script>
+ </head>
+ <body>
+	<div class="contain">
+		<div class="toggle">收缩</div>
+		<div class="toggle2">收缩2</div>
+		<dl>
+			<dt><img src="img/t01.jpg" /></dt>
+			<dd>
+				<a href="">html5从入门到精通</a>
+			</dd>
+		</dl>
+		<dl>
+			<dt><img src="img/t02.jpg" /></dt>
+			<dd>
+				<a href="">jquery开发从入门到...</a>
+			</dd>
+		</dl>
+		<dl>
+			<dt><img src="img/t03.jpg" /></dt>			<dd>
+				<a href="">java教程</a>
+			</dd>
+		</dl>
+		<dl>
+			<dt><img src="img/t04.jpg" /></dt>
+			<dd>
+				<a href="">bootstrap用户手册</a>
+			</dd>
+		</dl>
+		<dl>
+			<dt><img src="img/t05.jpg" /></dt>
+			<dd>
+				<a href="">javascript经典实例</a>
+			</dd>
+		</dl>
+		<dl>
+			<dt><img src="img/t06.jpg" /></dt>
+			<dd>
+				<a href="">jquery参考手册</a>
+			</dd>
+		</dl>
+		<dl>
+			<dt><img src="img/t07.jpg" /></dt>
+			<dd>
+				<a href="">javascript高级程序...</a>
+			</dd>
+		</dl>
+        <dl>
+			<dt><img src="img/t08.jpg" /></dt>
+			<dd>
+				<a href="">jquery用户界面库学...</a>
+			</dd>
+		</dl>
+        <dl>
+			<dt><img src="img/t09.jpg" /></dt>
+			<dd>
+				<a href="">精通javascript+jqu...</a>
+			</dd>
+		</dl>
+        <dl>
+			<dt><img src="img/t10.jpg" /></dt>
+			<dd>
+				<a href="">jquery权威指南</a>
+			</dd>
+		</dl>
+        <dl>
+			<dt><img src="img/t11.jpg" /></dt>
+			<dd>
+				<a href="">jquery实战</a>
+			</dd>
+		</dl>
+        <dl>
+			<dt><img src="img/t12.jpg" /></dt>
+			<dd>
+				<a href="">jquery即学即用</a>
+			</dd>
+		</dl>
+        <dl>
+			<dt><img src="img/t13.jpg" /></dt>
+			<dd>
+				<a href="">深入浅出jquery</a>
+			</dd>
+		</dl>
+        <dl>
+			<dt><img src="img/t14.jpg" /></dt>
+			<dd>
+				<a href="">jquery开发技术详解</a>
+			</dd>
+		</dl>
+        <dl>
+			<dt><img src="img/t15.jpg" /></dt>
+			<dd>
+				<a href="">jquery高级编程</a>
+			</dd>
+		</dl>
+	</div>
+ </body>
+<script>
+	$(function(){
+		$(".toggle").toggle(
+				//第1,3,5,7.....点击触发
+				function(){
+					//选择后10个子元素
+					var items = $(".contain").children();
+					for(var i =7;i<items.length;i++){
+						//$(items[i]).css("display","none");//隐藏
+						//$(items[i]).hide(1000)//在1000毫秒内隐藏完毕;
+						$(items[i]).fadeOut(1000)//在1000毫秒内隐藏完毕;
+					}
+					$(this).text("展开");
+				},
+				//第2，4，6，8...点击触发
+				function(){
+					//选择后10个子元素
+					var items = $(".contain").children();
+					for(var i =7;i<items.length;i++){
+						//$(items[i]).css("display","block");//显示
+						/*$(items[i]).show(1000,"linear",function(){
+							console.log("显示完毕")
+						})//在1000毫秒内显示完毕;*/
+						$(items[i]).fadeIn(1000)//在1000毫秒内隐藏完毕;
+					}
+					$(this).text("收缩");
+				}
+		);
+		$(".toggle2").click(function(){
+			//选择后10个子元素
+			var items = $(".contain").children();
+			for(var i =7;i<items.length;i++){
+				//toggle(speed):将show()和hide()集成;传入时间(1000(单位:毫秒))
+				$(items[i]).toggle(1000);
+				//$(items[i]).fadeToggle(1000);
+			}
+		});
+	})
+</script>
+</html>

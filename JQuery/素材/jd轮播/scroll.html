@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>仿京东轮播图</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .focus {
+            position: relative;
+            width: 730px;
+            height: 454px;
+            margin: 50px auto;
+        }
+
+        .page-con {
+            position: absolute;
+            z-index: 2;
+            text-align: center;
+            bottom: 10px;
+            width: 100%;
+            font-size: 0;
+        }
+
+        .page-con li {
+            font-size: 12px;
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            line-height: 18px;
+            border-radius: 50%;
+            margin: 0 2px;
+            color: #fff;
+            background: #3e3e3e;
+            cursor: pointer;
+        }
+        .focus a {
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<div class="focus">
+    <div class="img-box">
+        <a href=""><img src="img/focus.jpg"/></a>
+        <a href=""><img src="img/focus1.jpg"/></a>
+        <a href=""><img src="img/focus2.jpg"/></a>
+        <a href=""><img src="img/focus3.jpg"/></a>
+        <a href=""><img src="img/focus4.jpg"/></a>
+    </div>
+    <ul class="page-con">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</div>
+</body>
+<script>
+   var num = 5;//一共显示的数量
+   var current = 0;//默认显示
+   var time;//指向正在执行定时函数
+   function slide(isok){
+       //隐藏图片和导航
+    /*   $(".img-box a").eq(current-1<0?num-1:current-1).css("display","none");
+       $(".page-con li").eq(current-1<0?num-1:current-1).css("background-color","#3e3e3e");*/
+       for(var i=0;i<num;i++){
+           $(".img-box a").eq(i).css("display","none");
+           $(".page-con li").eq(i).css("background-color","#3e3e3e");
+       }
+       /**
+        *设置显示的样式
+        * 1:图片
+        * 2:导航
+        */
+       //图片显示
+       $(".img-box a").eq(current).css("display","block");
+       //导航变颜色
+       $(".page-con li").eq(current).css("background-color","red");
+       current++;
+       //判断界限
+       if(current===num){
+            current = 0;
+       }
+       //延迟1秒后,切换下一张图片
+       if(isok!=false){
+           time = setTimeout(slide,1000);
+       }
+   }
+   slide();
+    $(".focus").hover(
+            function(){
+                clearTimeout(time);
+            },
+            function(){
+                time = setTimeout(slide,1000);
+            }
+    );
+    $(".page-con li").click(function(){
+        //清除定时函数,不要去指定的
+        clearTimeout(time);
+        //计算要跳转到位置
+        current =  parseInt($(this).text())-1;
+        slide(false);
+    });
+</script>
+</html>

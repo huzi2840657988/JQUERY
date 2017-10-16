@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<style>
+  div {
+      width: 50px;
+      height: 50px;
+      background-color: black;
+      position: absolute;
+      left: 0;
+      top: 0;
+  }
+</style>
+<body>
+    <div>
+
+    </div>
+</body>
+<script>
+    //获取window页面的宽和高
+    var width=$(window).width();
+    var height=$(window).height();
+    console.log(width);
+    console.log(height);
+    var moveDiv=$("div");
+    var x=1;
+    var y=1;
+    //给块设置宽和高
+    var dw=moveDiv.width();
+    var dh=moveDiv.height();
+    console.log(dw);
+    //移动div，写移动函数
+    function move(){
+        if((dh+moveDiv.offset().top)>=height){
+            y = -1;
+        }else if((moveDiv.offset().top)<0){
+            y = 1;
+        }
+        //判断x轴
+        if((dw+moveDiv.offset().left)>=width){
+            x = -1;
+        }else if((moveDiv.offset().left)<0){
+            x = 1;
+        }
+        //div的宽度/高度+移动设置
+      moveDiv.offset(
+              {left:moveDiv.offset().left+x,
+                  top:moveDiv.offset().top+y
+      });
+ }
+   setInterval("move()",4);
+</script>
+</html>

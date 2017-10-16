@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <script src="js/jquery-1.8.3.min.js"></script>
+ </head>
+ <body>
+	<img src="imgs/1.jpg">
+	<img src="imgs/2.jpg">
+	<p>君问归期未有期</p>
+	<input placeholder="请输入需要搜索的内容" onchange="search();">
+	<div id="context" style="border:1px solid black">
+		
+	</div>
+ </body>
+ <script type="text/javascript">
+	var img = $("img");
+	console.log(img.src);
+	//给jquery对象绑定事件
+	img.click(function(){
+		alert("单击事件");
+		alert("src:"+this.src);
+	});
+	//获取p标签的jquery对象
+	/**
+      css
+		用法一:css("样式名","样式值");
+		用法二:css({
+			"样式名":"样式值",
+			"样式名2":"样式值2",
+			........
+			"样式名n":"样式值n"
+		});
+		用法三:css("样式名")：
+			获取该样式名所对应的值
+	*/
+	$("p").css("background-color","red");
+    $("p").css({
+		"color":"white",
+		"font-size":"26px",
+		"font-weight":"800"
+	});
+	var domImg = document.getElementsByTagName("img")[0];
+	console.log(domImg.src);
+	function search(){
+		//获取div
+		/**
+		 #:id选择器
+		 html();
+			用法一:传参,代表设置html
+			用法二:不传参,代表获取html
+		*/
+		var text = "<p>如果学习java...</p>"
+		$("#context").html(text);
+		console.log($("#context").html());
+	}
+	/**
+	  参数:如果传了参数就是传入的值
+	       如果不传,参数为undefined
+	*/
+	function myHtml(text){
+		console.log("myHtml:"+text);
+	}
+	myHtml();
+	myHtml(123);
+	//获取div的样式
+	var divCss =  $("#context").css("border");
+	console.log("div-css:"+divCss);
+	var pCss = $("p").css("color");
+	console.log("p-css"+pCss);
+ </script>
+</html>

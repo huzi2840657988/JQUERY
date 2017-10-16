@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+
+ <body>
+	<table border="1" >
+		<tr style="background-color:grey">
+			<td>书名</td>
+			<td>价格</td>
+		</tr>
+		<tr>
+			<td>Think in java</td>
+			<td>￥99.9</td>
+		</tr>
+		<tr>
+			<td>spring mvc</td>
+			<td>￥39.9</td>
+		</tr>
+		<tr>
+			<td>spring boot</td>
+			<td>￥29.9</td>
+		</tr>
+	</table>
+	<button onclick="newTr();">新建一行</button>
+	<button onclick="delTwo();">删除第二行</button>
+	<button onclick="changeStyle();">修改标题样式</button>	
+	<button onclick="copyLast();">复制最后一行</button>
+ </body>
+ <script type="text/javascript">
+	function newTr(){
+		var bookName =  prompt("请输入书名");
+		var bookPrice =  prompt("请输入书价格");
+		//创建td tr,并组织关系
+		var newTd = document.createElement("td");
+		newTd.innerText = bookName;
+		var newTd2 = document.createElement("td");
+		newTd2.innerText = "￥"+bookPrice;
+		var newTr = document.createElement("tr");
+		newTr.appendChild(newTd);
+		newTr.appendChild(newTd2);
+		//tr加入到table
+        var newTable = document.getElementsByTagName("table")[0];
+		newTable.appendChild(newTr);
+	}
+	function delTwo(){
+		 var delDom = document.getElementsByTagName("tr")[2];
+		 document.getElementsByTagName("tbody")[0].removeChild(delDom);
+	}
+	function changeStyle(){
+		 var array = document.getElementsByTagName("tr");
+		 for(var i = 1;i<array.length;i++){
+			 array[i].firstElementChild.style.color="red";
+		 }
+	}
+	function copyLast(){
+		 //获取所有的tr
+ 		 var array = document.getElementsByTagName("tr");
+		 //获取tr的最后一个
+		 var lastIndex = array.length-1;
+ 		 var cloneTr = array[lastIndex].cloneNode(true);
+		 //将克隆添加到最后一行
+		 var newTable = document.getElementsByTagName("table")[0];
+		 newTable.appendChild(cloneTr);
+	}
+ </script>
+</html>

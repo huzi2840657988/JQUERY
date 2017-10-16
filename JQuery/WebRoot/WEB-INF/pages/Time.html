@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+	
+ <body>
+	<button onclick="a('测试',18);">调用函数</button>
+	<strong id="text"></strong>
+ </body>
+ <script type="text/javascript">
+		function a(name,age){
+			alert(name+"-"+age);
+
+			return "1";
+		}
+		function b(){
+			console.log(1);
+		}
+		setTimeout("b();",1000);
+		var interval = setInterval("b();",1000);
+		/**
+		 清除
+		 clearInterval(interval);
+		 */
+		var arr = new Array(2);
+		arr.push(12);
+		arr.push(13);
+		arr.push(14);
+		console.log(arr);
+		//a("张三",18);
+		//时钟特效
+		function showTime(){
+			var current = new Date();
+			//获取年月日
+			var year = current.getFullYear();
+			var month = current.getMonth();
+			var day = current.getDate();
+			//获取时分秒
+			var hour = current.getHours();
+			var minute = current.getMinutes();
+			var second = current.getSeconds();
+
+			//获取strong
+			var strongDom = document.getElementById("text");
+			strongDom.innerText = year+"-"+month+"-"+day+"  "+hour+":"+minute+":"+second+"<strong>1</strong>";
+		}
+		setInterval("showTime();",1000);
+	</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<style>
+    .colorBlock{
+        width: 200px;
+        height: 200px;
+        background-color: #fff7a3;
+    }
+</style>
+
+<body>
+    <div class="colorBlock">
+
+    </div>
+    <button>切换颜色</button>
+    <hr>
+    <img src="imgs/hot2.jpg"><br>
+    <button>上一张</button>
+    <button>下一张</button>
+</body>
+<script>
+    $(function(){
+        $("div").hover(
+                function(){
+                   $(this).css("background-color","red");
+                },
+                function(){
+                    $(this).css("background-color","#fff7a3");
+                }
+        );
+        $("button:first").toggle(
+                function(){
+                    $("div").css("background-color","red");
+                },
+                function(){
+                    $("div").css("background-color","yellow");
+                },
+                function(){
+                    $("div").css("background-color","#fff7a3");
+                }
+        );
+        var imgsSrc = new Array();
+        imgsSrc.push("imgs/hot2.jpg");
+        imgsSrc.push("imgs/hot3.jpg");
+        imgsSrc.push("imgs/hot4.jpg");
+        imgsSrc.push("imgs/hot5.jpg");
+        imgsSrc.push("imgs/hot6.jpg");
+        console.log(imgsSrc,imgsSrc.length);
+        var currentIndex = 0;//默认显示第一张
+        //上一张
+        $("button:eq(1)").click(function(){
+            /**
+             * 如果为第一张,则上一张为末尾
+             * 其他的-1
+             */
+            if(currentIndex===0){
+                currentIndex=4;
+            }else{
+                currentIndex=currentIndex-1;
+            }
+            //获取路径
+            var imgSrc = imgsSrc[currentIndex];
+            //将路径设置到img中
+            $("img").attr("src",imgSrc);
+        });
+    })
+</script>
+</html>

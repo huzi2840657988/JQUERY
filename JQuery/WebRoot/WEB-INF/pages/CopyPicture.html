@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+	<script type="text/javascript">
+	   function showSrc(){
+		    //如果获取dom的属性,直接.属性名
+			var imgDom = document.getElementsByTagName("img")[0];
+		    alert(imgDom.src);
+	   }
+	   function copy(){
+ 	   	    var imgDom = document.getElementsByTagName("img")[0];
+			var src = imgDom.src;
+			//新创建img
+ 			var newImg = document.createElement("img");
+		    newImg.src = src;
+			//将新建的dom加入到document中
+			var divDom = document.getElementById("container");
+			//给该节点末尾添加元素
+			divDom.appendChild(newImg);
+	   }
+	   function copy2(){
+		    //需要被copy的
+ 	   	    var imgDom = document.getElementsByTagName("img")[0];
+			//新创建img
+ 			var newImg =  imgDom.cloneNode();
+			//将新建的dom加入到document中
+			var divDom = document.getElementById("container");
+			//给该节点末尾添加元素
+			divDom.appendChild(newImg);
+	   }
+	</script>
+ <body>
+	<img src="imgs/1.jpg" onclick="alert('img')"><br>
+	<button onclick="showSrc();">显示图片路径</button>
+	<button onclick="copy();">复制图片</button>
+	<button onclick="copy2();">复制图片2</button>
+    <div id = "container" style="width:300px;height:300px;border:1px    solid black">
+	</div>
+ </body>
+</html>
